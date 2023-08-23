@@ -34,7 +34,7 @@ public:
         if (heads[index]->key != -1)
         {
             int fx = R - (key % R); // 11 - (17%11)
-            for (size_t i = 0; i < n; i++)
+            for (size_t i = 1; i < n; i++)
             {
                 int hi = (key + i * fx) % n;
                 if (heads[hi]->key == -1)
@@ -54,22 +54,16 @@ public:
         for (size_t i = 0; i < n; i++)
         {
             Node *at = heads[i];
-            while (at != nullptr)
-            {
-                cout << "(" << at->key << "," << at->val << ") ";
-                at = at->next;
-            }
-            cout << endl;
+
+            cout << "(" << at->key << "," << at->val << ")\n";
         }
     }
     string search(int key)
     {
         int index = key % n;
-        if (heads[index]->key != key)
+        int fx = R - (key % R);
         {
-            int hx = key % R;
-            int fx = R - (key % R);
-            for (size_t i = 0; i < n; i++)
+            for (size_t i = 1; i <= n; i++)
             {
                 int hi = (key + i * fx) % n;
                 if (heads[hi]->key == key)
@@ -77,7 +71,6 @@ public:
                     return heads[hi]->val;
                 }
             }
-            return "-";
         }
         return "-";
     }
