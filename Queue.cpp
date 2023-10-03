@@ -19,7 +19,7 @@ public:
     {
         tail++;
         n++;
-        *(queue + tail) = element;
+        queue[tail] = element;
     }
     int dequeue()
     {
